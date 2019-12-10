@@ -111,6 +111,14 @@ class A
     {
         echo self::$staticBar . PHP_EOL;
     }
+
+    public function piyo()
+    {
+        $this->Foo();
+        $this::Foo();
+        $this->StaticFoo();
+        $this::StaticFoo();
+    }
 }
 ```
 ```php
@@ -176,4 +184,11 @@ echo $a->bar . PHP_EOL;
 // PHP Notice
 // $staticBar は静的プロパティだからA::$staticBarで参照して
 echo $a->staticBar . PHP_EOL;
+
+// 出力
+// A: Foo Method
+// A: Foo Method
+// A: StaticFoo Method
+// A: StaticFoo Method
+$a->piyo();
 ```
